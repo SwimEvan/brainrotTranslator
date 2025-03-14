@@ -139,7 +139,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="ACk-gP-epq" detailTextLabel="yKv-YU-vpn" style="IBUITableViewCellStyleValue2" id="Wip-Le-Rr9">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="ACk-gP-epq" detailTextLabel="yKv-YU-vpn" style="IBUITableViewCellStyleValue2" id="Wip-Le-Rr9" customClass="myCell">
                                         <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wip-Le-Rr9" id="t7Z-Ur-voc">
@@ -186,6 +186,9 @@
                         <color key="backgroundColor" red="0.88390755509999996" green="1" blue="0.85939129299999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Dictionary" image="text.book.closed.fill" catalog="system" id="Xb8-e4-Bxq"/>
+                    <connections>
+                        <outlet property="tableView" destination="snF-Q9-5GT" id="ANo-KJ-g1d"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1W3-Jm-wAo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
