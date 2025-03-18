@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import GoogleGenerativeAI
 
 class LearnDictionary {
     var name: String
@@ -18,10 +19,13 @@ class LearnDictionary {
 }
 
 class LearnViewController: UIViewController, UITableViewDataSource {
-
- var terms = [LearnDictionary]()
-  
+    
+    @IBOutlet weak var tfOutlet: UITextField!
     @IBOutlet weak var tableView: UITableView!
+    let apiKey = "AIzaSyA2qZ4Bj89yqhVdL7gVbi2UFdeyZ7pTzKs"
+    var prompt = ""
+ var terms = [LearnDictionary]()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,4 +102,41 @@ class LearnViewController: UIViewController, UITableViewDataSource {
         cell.detailTextLabel!.text = term.definition
         return cell
     }
+    public func generateTextForPrompt(prompt:String) async -> String{
+        let model = GenerativeModel(name: "gemini-2.0-flash-thinking-exp-01-21", apiKey: apiKey)
+        do {
+            let response: GenerateContentResponse!
+            
+           
+            
+           
+                response = try await model.generateContent("Come up with an definition for this brainrot word: \(prompt). don't say anything else except for the translation.")
+             
+            
+            if let text = response.text {
+                return text
+            } else {
+                return "Empty"
+            }
+        } catch {
+            print("Error generating content: \(error)")
+            return "Error"
+        }
+    }
+    
+    @IBAction func searchAction(_ sender: UIButton) {
+        
+        prompt = tfOutlet.text!
+        
+        // Call the async function to generate text
+        Task {
+            let generatedText = await generateTextForPrompt(prompt: prompt)
+            // Update the label with the generated text on the main thread
+            DispatchQueue.main.async {
+                terms.append(LearnDictionary(name: tfOutlet.text!, definition: generatedText))
+            }
+        }
+
+    }
+    
 }
