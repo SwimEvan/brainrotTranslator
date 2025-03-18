@@ -133,7 +133,7 @@ class LearnViewController: UIViewController, UITableViewDataSource {
             let generatedText = await generateTextForPrompt(prompt: prompt)
             // Update the label with the generated text on the main thread
             DispatchQueue.main.async {
-                terms.append(LearnDictionary(name: tfOutlet.text!, definition: generatedText))
+                self.terms.append(LearnDictionary(name: self.tfOutlet.text!, definition: generatedText))
             }
         }
 
