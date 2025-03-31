@@ -134,6 +134,7 @@ class LearnViewController: UIViewController, UITableViewDataSource {
             // Update the label with the generated text on the main thread
             DispatchQueue.main.async {
                 self.terms.append(LearnDictionary(name: self.tfOutlet.text!, definition: generatedText))
+                self.tableView.reloadData()
             }
         }
 
